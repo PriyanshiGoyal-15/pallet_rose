@@ -1,331 +1,289 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SLIDES = [
   {
-    image: '/images/slide1.png',
-    artistName: '@reatha',
-    subtitle: 'CLASS BY REATHA C. PHELAN',
-    heading: 'Gateway to\nartist people.',
+    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80',
+    artistName: '@logistics',
+    subtitle: 'TRANSPORTATION & LOGISTICS',
+    heading: 'Reliable supply chain\nand freight services.',
   },
   {
-    image: '/images/slide2.png',
-    artistName: '@marcus',
-    subtitle: 'STUDIO WITH MARCUS VALE',
-    heading: 'Explore the\ncreative mind.',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
+    artistName: '@digital',
+    subtitle: 'DIGITAL & TECHNOLOGY',
+    heading: 'Enterprise digital innovation\nand cloud systems.',
   },
   {
-    image: '/images/slide3.png',
-    artistName: '@elena',
-    subtitle: 'CRAFTED BY ELENA MOORE',
-    heading: 'Sculpting\nnew visions.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    artistName: '@security',
+    subtitle: 'SECURITY & RISK MANAGEMENT',
+    heading: 'Robust virtual security\nand threat monitoring.',
   },
   {
-    image: '/images/slide4.png',
-    artistName: '@sophie',
-    subtitle: 'LENS OF SOPHIE CHEN',
-    heading: 'Capturing\nraw beauty.',
+    image: 'https://images.unsplash.com/photo-1521791136364-7286475269a9?auto=format&fit=crop&w=1200&q=80',
+    artistName: '@support',
+    subtitle: 'CUSTOMER SUPPORT & CALL CENTER',
+    heading: 'Omnichannel communication\nand customer solutions.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+    artistName: '@travel',
+    subtitle: 'TRAVEL AND TOURISM',
+    heading: 'Global travel administration\nand leisure support.',
   },
 ];
 
 export const RevealSection: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [direction, setDirection] = useState<'next' | 'prev'>('next');
-  const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const slideContainerRef = useRef<HTMLDivElement>(null);
 
-  // Entry animation on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimatedIn) {
-            setHasAnimatedIn(true);
-            observer.disconnect();
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const textBlocks = gsap.utils.toArray<HTMLElement>(".slide-content-block");
+      const imageBlocks = gsap.utils.toArray<HTMLElement>(".slide-image-block");
+      const dots = gsap.utils.toArray<HTMLElement>(".carousel-dot");
+
+      const mm = gsap.matchMedia();
+
+      // Desktop animations (min-width: 1024px)
+      mm.add("(min-width: 1024px)", () => {
+        // Initial state:
+        // Slide 0 is fully active
+        gsap.set(textBlocks[0], { opacity: 1, yPercent: 0, pointerEvents: 'auto' });
+        gsap.set(imageBlocks[0], { yPercent: 0 });
+        gsap.set(dots[0], { background: '#fff', scale: 1.25 });
+
+        // Slide 1 to 4 are positioned below (off-screen vertically) or hidden
+        for (let i = 1; i < SLIDES.length; i++) {
+          gsap.set(textBlocks[i], { opacity: 0, yPercent: 40, pointerEvents: 'none' });
+          gsap.set(imageBlocks[i], { yPercent: 100 }); // Slides sit completely below Slide 0
+          gsap.set(dots[i], { background: 'rgba(255, 255, 255, 0.4)', scale: 1 });
+        }
+
+        // Create main timeline linked to vertical scroll pinning
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            id: "revealScrollTrigger",
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "+=350%", // 350% for tight, polished progression
+            pin: true,
+            scrub: 1, // Smooth scrolling
+            invalidateOnRefresh: true,
           }
         });
-      },
-      { threshold: 0.2 }
-    );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+        // Add vertical scrolling transitions between slides
+        for (let i = 0; i < SLIDES.length - 1; i++) {
+          const nextIdx = i + 1;
+          const timeLabel = `slide_${i}`;
+
+          // TEXT TRANSITION: Slide i scrolls up and fades out; Slide nextIdx scrolls up from below and fades in
+          tl.to(textBlocks[i], {
+            opacity: 0,
+            yPercent: -40,
+            pointerEvents: 'none',
+            duration: 1,
+            ease: "power1.inOut"
+          }, timeLabel);
+
+          tl.to(textBlocks[nextIdx], {
+            opacity: 1,
+            yPercent: 0,
+            pointerEvents: 'auto',
+            duration: 1,
+            ease: "power1.inOut"
+          }, timeLabel);
+
+          // IMAGE TRANSITION: Vertical slide parallax
+          // Slide i slides up slightly (parallax exit)
+          tl.to(imageBlocks[i], {
+            yPercent: -30,
+            duration: 1,
+            ease: "power1.inOut"
+          }, timeLabel);
+
+          // Slide nextIdx slides up from 100% to 0% (card overlap)
+          tl.to(imageBlocks[nextIdx], {
+            yPercent: 0,
+            duration: 1,
+            ease: "power1.inOut"
+          }, timeLabel);
+
+          // DOTS TRANSITION
+          tl.to(dots[i], {
+            background: 'rgba(255,255,255,0.4)',
+            scale: 1,
+            duration: 0.5
+          }, timeLabel);
+
+          tl.to(dots[nextIdx], {
+            background: '#fff',
+            scale: 1.25,
+            duration: 0.5
+          }, timeLabel);
+        }
+      });
+
+      // Mobile / Tablet defaults (max-width: 1023px)
+      mm.add("(max-width: 1023px)", () => {
+        // Reset properties to standard responsive layouts
+        gsap.set(textBlocks, { opacity: 1, yPercent: 0, pointerEvents: 'auto', position: 'relative' });
+        gsap.set(imageBlocks, { yPercent: 0, position: 'relative' });
+      });
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const handleDotClick = (index: number) => {
+    const trigger = ScrollTrigger.getById("revealScrollTrigger");
+    if (trigger) {
+      // Calculate scroll coordinate of target slide
+      const scrollPos = trigger.start + (index / (SLIDES.length - 1)) * (trigger.end - trigger.start);
+      window.scrollTo({
+        top: scrollPos,
+        behavior: 'smooth'
+      });
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, [hasAnimatedIn]);
-
-  const goToSlide = useCallback(
-    (dir: 'next' | 'prev') => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setDirection(dir);
-
-      setTimeout(() => {
-        setCurrentSlide((prev) => {
-          if (dir === 'next') return (prev + 1) % SLIDES.length;
-          return (prev - 1 + SLIDES.length) % SLIDES.length;
-        });
-        setTimeout(() => setIsAnimating(false), 600);
-      }, 50);
-    },
-    [isAnimating]
-  );
-
-  const slide = SLIDES[currentSlide];
+  };
 
   return (
-    <div className="section-card reveal-section-wrapper" ref={sectionRef}>
+    <div className="section-card reveal-section-wrapper" ref={sectionRef} style={{ background: '#f8f8f8' }}>
       <section
         id="reveal-section"
-        className={`reveal-section ${hasAnimatedIn ? 'animated-in' : ''}`}
-        style={{
-          position: 'relative',
-          padding: '60px 48px 80px',
-          minHeight: '85vh',
-          overflow: 'hidden',
-        }}
+        className="w-full relative px-6 md:px-12 py-[80px] md:py-[100px] flex flex-col justify-center min-h-auto lg:min-h-screen"
+        style={{ overflow: 'hidden' }}
       >
-        {/* Subtitle */}
-        <p
-          className={`carousel-subtitle ${isAnimating ? 'carousel-fade-out' : 'carousel-fade-in'}`}
-          style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '11px',
-            fontWeight: 600,
-            letterSpacing: '3px',
-            textTransform: 'uppercase',
-            color: '#999',
-            marginBottom: '12px',
-          }}
-        >
-          {slide.subtitle}
-        </p>
-
-        {/* Heading + @mention row */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            marginBottom: '32px',
-          }}
-        >
-          <h2
-            className={`carousel-heading ${isAnimating ? 'carousel-slide-out' : 'carousel-slide-in'}`}
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: 'clamp(36px, 5vw, 58px)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              color: '#1a1a1a',
-              whiteSpace: 'pre-line',
-              margin: 0,
-            }}
-          >
-            {slide.heading}
-          </h2>
-
-          <div
-            className={`carousel-mention ${isAnimating ? 'carousel-pop-out' : 'carousel-pop-in'}`}
-            style={{
-              background: '#2d2d2d',
-              color: '#fff',
-              padding: '8px 18px',
-              borderRadius: '24px',
-              fontSize: '14px',
-              fontWeight: 600,
-              fontFamily: "'Inter', sans-serif",
-              marginTop: '12px',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-            }}
-          >
-            {slide.artistName}
-          </div>
-        </div>
-
-        {/* Image Carousel */}
-        <div
-          ref={slideContainerRef}
-          className="carousel-container"
-          style={{
-            position: 'relative',
-            width: '100%',
-            borderRadius: '24px',
-            overflow: 'hidden',
-            aspectRatio: '16 / 9',
-            background: '#f0f0f0',
-          }}
-        >
-          {/* Current Image */}
-          <div
-            className={`carousel-image-wrapper ${isAnimating
-              ? direction === 'next'
-                ? 'carousel-img-exit-left'
-                : 'carousel-img-exit-right'
-              : 'carousel-img-enter'
-              }`}
-            style={{
-              position: 'absolute',
-              inset: 0,
-            }}
-          >
-            <img
-              src={slide.image}
-              alt={slide.artistName}
-              loading="lazy"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-            />
-          </div>
-
-          {/* Decorative Squares */}
-          <div
-            className="decorative-squares"
-            style={{
-              position: 'absolute',
-              top: '28px',
-              left: '28px',
-              display: 'flex',
-              flexDirection: 'column',
-              zIndex: 5,
-            }}
-          >
-            <div
-              style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '12px',
-                background: '#fff',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              }}
-            />
-            <div
-              style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '12px',
-                background: '#1a1a1a',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              }}
-            />
-          </div>
-
-          {/* Dot Indicators */}
-          <div
-            className="dot-indicators"
-            style={{
-              position: 'absolute',
-              top: '28px',
-              right: '28px',
-              display: 'flex',
-              gap: '6px',
-              zIndex: 5,
-            }}
-          >
-            {SLIDES.map((_, i) => (
+        {/* Responsive layout: Text Left, Stacked Carousel Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full max-w-[1400px] mx-auto">
+          
+          {/* Left Column: Stacked Text Slides on Desktop, Sequential list on mobile */}
+          <div className="lg:col-span-5 flex flex-col justify-center relative min-h-auto lg:min-h-[360px] gap-12 lg:gap-0">
+            {SLIDES.map((slide, i) => (
               <div
                 key={i}
-                className={`dot ${i === currentSlide ? 'active' : ''}`}
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: i === currentSlide ? '#fff' : 'rgba(255,255,255,0.5)',
-                  transition: 'background 0.3s ease',
-                  cursor: 'pointer',
-                }}
-              />
+                className="slide-content-block relative lg:absolute lg:inset-0 flex flex-col justify-center opacity-100 lg:opacity-0 pointer-events-auto lg:pointer-events-none"
+              >
+                {/* Subtitle */}
+                <p
+                  className="carousel-subtitle"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    letterSpacing: '3px',
+                    textTransform: 'uppercase',
+                    color: '#999',
+                    marginBottom: '16px',
+                  }}
+                >
+                  {slide.subtitle}
+                </p>
+
+                {/* Heading + @mention bubble */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
+                  <h2
+                    className="carousel-heading"
+                    style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontSize: 'clamp(30px, 3.8vw, 44px)',
+                      fontWeight: 700,
+                      lineHeight: 1.15,
+                      color: '#1a1a1a',
+                      whiteSpace: 'pre-line',
+                      margin: 0,
+                      flex: 1,
+                    }}
+                  >
+                    {slide.heading}
+                  </h2>
+
+                  <div
+                    className="carousel-mention w-fit self-start sm:self-auto"
+                    style={{
+                      background: '#2d2d2d',
+                      color: '#fff',
+                      padding: '8px 18px',
+                      borderRadius: '24px',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      fontFamily: "'Inter', sans-serif",
+                      whiteSpace: 'nowrap',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+                      marginTop: '4px',
+                    }}
+                  >
+                    {slide.artistName}
+                  </div>
+                </div>
+
+                {/* Inline Image - Visible ONLY on mobile/tablet */}
+                <div className="block lg:hidden w-full rounded-[20px] overflow-hidden shadow-lg aspect-[16/10] bg-[#f0f0f0] mb-4">
+                  <img
+                    src={slide.image}
+                    alt={slide.artistName}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              </div>
             ))}
           </div>
 
-          {/* Navigation Arrows */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '28px',
-              right: '28px',
-              display: 'flex',
-              gap: '8px',
-              zIndex: 5,
-            }}
-          >
-            <button
-              onClick={() => goToSlide('prev')}
-              className="carousel-arrow-btn"
-              aria-label="Previous slide"
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: 'rgba(255,255,255,0.9)',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '18px',
-                color: '#1a1a1a',
-                fontWeight: 700,
-                backdropFilter: 'blur(10px)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
-                transition: 'all 0.2s ease',
-              }}
+          {/* Right Column: Stacked Image Carousel - Visible ONLY on Desktop */}
+          <div className="hidden lg:block lg:col-span-7 relative w-full flex flex-col items-center">
+            <div
+              ref={slideContainerRef}
+              className="carousel-container w-full relative rounded-[24px] overflow-hidden aspect-[16/10] bg-[#f0f0f0] shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
             >
-              ‹
-            </button>
-            <button
-              onClick={() => goToSlide('next')}
-              className="carousel-arrow-btn"
-              aria-label="Next slide"
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: 'rgba(255,255,255,0.9)',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '18px',
-                color: '#1a1a1a',
-                fontWeight: 700,
-                backdropFilter: 'blur(10px)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              ›
-            </button>
+              {SLIDES.map((slide, i) => (
+                <div
+                  key={i}
+                  className="slide-image-block absolute inset-0 overflow-hidden"
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.artistName}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              ))}
+
+              {/* Decorative Squares (Matching Premium Style) */}
+              <div className="absolute top-[28px] left-[28px] flex flex-col z-10 gap-2">
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)]" />
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-[#1a1a1a] shadow-[0_4px_12px_rgba(0,0,0,0.15)]" />
+              </div>
+
+              {/* Clickable Dot Indicators */}
+              <div className="absolute top-[28px] right-[28px] flex gap-[8px] z-10">
+                {SLIDES.map((_, i) => (
+                  <div
+                    key={i}
+                    className="carousel-dot"
+                    onClick={() => handleDotClick(i)}
+                    style={{
+                      width: '8px',
+                      height: '8px',
+                      borderRadius: '50%',
+                      transition: 'all 0.3s ease',
+                      cursor: 'pointer',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
+
         </div>
       </section>
-
-      <style>{`
-        /* Entry Animation - Only this is added */
-        .reveal-section {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-section.animated-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      `}</style>
     </div>
   );
 };

@@ -45,76 +45,128 @@ export const NewEcommerceSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="mx-[14px] mb-[14px] bg-[#fff] rounded-[32px] overflow-hidden relative shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)]" ref={sectionRef}>
+    <div className="mx-[14px] mb-[14px] bg-[#fff] rounded-[26px] overflow-hidden relative shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)]" ref={sectionRef}>
 
       {/* Background gradients for ultra premium feel */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#fafafa] via-white to-[#f0f0f0] pointer-events-none"></div>
 
-      <section className="min-h-screen relative flex items-center justify-center overflow-hidden" style={{ perspective: '1200px' }}>
-
-        <div ref={containerRef} className="relative w-full h-[700px] max-w-[1200px] mx-auto transform-style-3d">
-
-          {/* Card 1 */}
-          <div className="ec-card-anim absolute left-0 top-[20px] w-[240px] h-[320px] rounded-[24px] bg-gradient-to-br from-[#ebebeb] to-[#f5f5f5] shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform -rotate-[3deg] overflow-hidden flex flex-col justify-end p-5 z-[1] transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer">
-            <div className="text-[40px] font-black uppercase text-black leading-[0.9] absolute top-5 left-5 tracking-tighter">All Good<br />Things</div>
-            <div className="w-[150px] h-[150px] bg-[#c0392b] rounded-full absolute bottom-10 -right-6 mix-blend-multiply opacity-80 blur-[25px]"></div>
-            <div className="text-sm font-bold text-black relative z-10 opacity-70 tracking-widest">TO AN END</div>
-          </div>
-
-          {/* Card 2 (Text Card) - Glassmorphism */}
-          <div className="ec-card-anim absolute left-[190px] top-[70px] w-[260px] h-[300px] rounded-[24px] bg-white/70 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(255,255,255,0.5)] transform rotate-[2deg] p-7 flex flex-col justify-between z-[2] transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer">
-            <div>
-              <h3 className="text-[24px] font-extrabold leading-[1.1] text-[#111] max-w-[160px] tracking-tight">Where Art Meets Market</h3>
-              <div className="text-[11px] text-[#777] mt-3 font-bold tracking-widest uppercase flex items-center gap-2 bg-[#f0f0f0] w-fit px-3 py-1.5 rounded-full">
-                <span className="w-[6px] h-[6px] bg-[#3dbf9e] rounded-full animate-pulse"></span> APY: 4.60%
-              </div>
+      <section className="min-h-screen relative flex items-center justify-center overflow-hidden px-6 md:px-12 py-[80px] md:py-[100px]" style={{ perspective: '1200px' }}>
+        
+        {/* Split Grid Layout: Text Left, Staggered Cards Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full max-w-[1400px] mx-auto">
+          
+          {/* Left Column: Client Detailed Content */}
+          <div className="lg:col-span-5 flex flex-col justify-center text-left relative z-20">
+            <div className="w-[48px] h-[48px] rounded-full border border-black/5 bg-white flex items-center justify-center shadow-sm mb-6">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a56ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
             </div>
-            <div className="absolute top-6 right-6 w-[36px] h-[36px] bg-[#111] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9"></polyline><line x1="9" y1="21" x2="21" y2="3"></line></svg>
-            </div>
-            <p className="text-[14px] text-[#555] leading-relaxed font-medium">
-              Allowing artists to showcase their work and buyers to find unique, inspiring pieces.
+
+            <h2 className="text-[34px] sm:text-[44px] font-black tracking-[-2px] leading-[1.1] text-[#111] mb-6">
+              Be a Part of Our<br />
+              <span className="text-[#3dbf9e]">Sustainable Journey</span>
+            </h2>
+
+            <h3 className="text-[13px] font-black tracking-[3px] uppercase text-[#1a56ff] mb-4">Together, We Can Build a Better Future</h3>
+
+            <p className="text-[14px] text-[#444] leading-[1.75] mb-5 font-semibold">
+              At Eloma Group, we believe that meaningful change happens when businesses come together with a shared purpose. Our commitment to sustainability goes beyond operations - it’s about creating long-term impact through collaboration, innovation, and responsible growth.
             </p>
-          </div>
 
-          {/* Card 3 */}
-          <div className="ec-card-anim absolute left-[410px] top-[140px] w-[240px] h-[300px] rounded-[24px] bg-gradient-to-br from-[#d7ccc8] to-[#a1887f] shadow-[0_20px_40px_rgba(161,136,127,0.3)] transform rotate-[4deg] z-[3] p-5 flex flex-col justify-between transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer overflow-hidden border-[4px] border-white/20">
-            <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-white/20 rounded-full blur-[40px] -mr-[50px] -mt-[50px]"></div>
-            <div className="text-right font-black uppercase text-4xl opacity-20 tracking-tighter mix-blend-overlay">Staff</div>
-            <div className="text-black font-bold uppercase tracking-widest text-[11px] bg-white/30 backdrop-blur-md px-3 py-2 rounded-lg w-fit">No or Once More</div>
-          </div>
-
-          {/* Card 4 */}
-          <div className="ec-card-anim absolute left-[600px] top-[220px] w-[240px] h-[300px] rounded-[24px] bg-gradient-to-br from-[#4caf50] to-[#2e7d32] shadow-[0_20px_40px_rgba(76,175,80,0.3)] transform -rotate-[2deg] z-[4] p-5 flex items-end justify-center transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer overflow-hidden">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-50"></div>
-            <div className="text-white font-bold text-[11px] tracking-[4px] uppercase mb-5 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 z-10">A Knit by Le Fleur</div>
-          </div>
-
-          {/* Card 5 */}
-          <div className="ec-card-anim absolute left-[790px] top-[280px] w-[240px] h-[300px] rounded-[24px] bg-gradient-to-br from-[#ffc107] to-[#ff9800] shadow-[0_20px_40px_rgba(255,152,0,0.3)] transform rotate-[3deg] z-[5] p-6 flex flex-col justify-end transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer">
-            <div className="absolute top-[-50px] left-[-50px] w-[150px] h-[150px] bg-white/30 rounded-full blur-[30px]"></div>
-            <div className="text-center font-black uppercase text-[#111] text-[36px] leading-[0.9] tracking-tighter mb-4 z-10 mix-blend-overlay">The<br />Green<br />Knight</div>
-
-            {/* Bubble pointing at this card */}
-            <div className="absolute -top-[50px] left-1/2 -translate-x-1/2 px-5 py-2 rounded-[50px] text-[15px] font-bold text-white bg-[#111] shadow-[0_15px_30px_rgba(0,0,0,0.2)] whitespace-nowrap z-20">
-              @Johnson
-              <div className="absolute -bottom-[8px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[10px] border-l-transparent border-r-transparent border-t-[#111]"></div>
+            {/* Glowing Glass Callout Panel */}
+            <div className="p-6 rounded-[20px] bg-neutral-50/80 border border-black/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[#3dbf9e]/10 rounded-full blur-[25px] pointer-events-none"></div>
+              <p className="text-[12.5px] text-[#666] leading-[1.65] font-medium relative z-10">
+                By partnering with us, you become part of a forward-thinking ecosystem that values eco-conscious practices, ethical business standards, and future-ready solutions. Together, we can reduce environmental impact, drive smarter operations, and build businesses that are not only successful today but sustainable for tomorrow.
+              </p>
             </div>
           </div>
 
-          {/* Card 6 */}
-          <div className="ec-card-anim absolute left-[970px] top-[400px] w-[240px] h-[300px] rounded-[24px] bg-gradient-to-b from-[#ff5722] to-[#e64a19] shadow-[0_20px_40px_rgba(255,87,34,0.3)] transform -rotate-[4deg] z-[6] p-6 flex flex-col justify-between border-[8px] border-[#111] transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer">
-            <div className="text-[#111] font-black text-[46px] uppercase tracking-tighter leading-none">Glimmer</div>
-            <div className="text-white font-bold tracking-widest text-[13px] bg-black/10 w-fit px-3 py-1 rounded-md">Mi. 10.4</div>
-          </div>
+          {/* Right Column: Stacked 3D Card Fan */}
+          <div className="lg:col-span-7 relative w-full h-[380px] sm:h-[480px] lg:h-[580px] flex items-center justify-center transform-style-3d overflow-hidden lg:overflow-visible">
+            <div ref={containerRef} className="relative w-[580px] h-[520px] transform-style-3d scale-[0.6] sm:scale-[0.85] lg:scale-100 origin-center">
 
-          {/* Card 7 */}
-          <div className="ec-card-anim absolute left-[1160px] top-[490px] w-[240px] h-[300px] rounded-[24px] bg-gradient-to-tr from-[#1a56ff] to-[#3b82f6] shadow-[0_20px_40px_rgba(26,86,255,0.3)] transform rotate-[5deg] z-[7] p-6 flex flex-col items-center justify-center transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer border border-white/20">
-            <div className="w-[80px] h-[80px] border-[4px] border-white/30 rounded-full mb-6 flex items-center justify-center">
-              <div className="w-[40px] h-[40px] bg-white rounded-full animate-pulse"></div>
+              {/* Card 1 */}
+              <div 
+                className="ec-card-anim absolute left-[0px] top-[20px] w-[200px] h-[270px] rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.06)] transform -rotate-[3deg] overflow-hidden flex flex-col justify-end p-5 z-[1] transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer border border-white/20"
+                style={{ background: "linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=300&q=80') no-repeat center/cover" }}
+              >
+                <div className="text-[28px] font-black uppercase text-black leading-[0.9] absolute top-5 left-5 tracking-tighter">Sustainable<br />Future</div>
+                <div className="w-[120px] h-[120px] bg-[#3dbf9e] rounded-full absolute bottom-10 -right-6 mix-blend-multiply opacity-80 blur-[25px]"></div>
+                <div className="text-[11px] font-bold text-black relative z-10 opacity-70 tracking-widest">TOGETHER</div>
+              </div>
+
+              {/* Card 2 (Text Card) - Glassmorphism */}
+              <div className="ec-card-anim absolute left-[60px] top-[50px] w-[210px] h-[260px] rounded-[24px] bg-white/70 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(255,255,255,0.5)] transform rotate-[2deg] p-6 flex flex-col justify-between z-[2] transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer">
+                <div>
+                  <h3 className="text-[17px] font-extrabold leading-[1.1] text-[#111] tracking-tight">Eco-Conscious Ecosystem</h3>
+                  <div className="text-[9px] text-[#777] mt-2.5 font-bold tracking-widest uppercase flex items-center gap-1.5 bg-[#f0f0f0] w-fit px-2.5 py-1 rounded-full">
+                    <span className="w-[5px] h-[5px] bg-[#3dbf9e] rounded-full animate-pulse"></span> ESTD: 2026
+                  </div>
+                </div>
+                <div className="absolute top-5 right-5 w-[30px] h-[30px] bg-[#111] rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9"></polyline><line x1="9" y1="21" x2="21" y2="3"></line></svg>
+                </div>
+                <p className="text-[12px] text-[#555] leading-relaxed font-medium">
+                  Partner with us to create a forward-thinking ecosystem valuing future-ready solutions.
+                </p>
+              </div>
+
+              {/* Card 3 */}
+              <div 
+                className="ec-card-anim absolute left-[120px] top-[90px] w-[200px] h-[270px] rounded-[24px] shadow-[0_20px_40px_rgba(161,136,127,0.2)] transform rotate-[4deg] z-[3] p-5 flex flex-col justify-between transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer overflow-hidden border-[4px] border-white/20"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=300&q=80') no-repeat center/cover" }}
+              >
+                <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-white/20 rounded-full blur-[30px] -mr-[40px] -mt-[40px]"></div>
+                <div className="text-right font-black uppercase text-2xl opacity-30 tracking-tighter text-white">Ethics</div>
+                <div className="text-white font-bold uppercase tracking-widest text-[10px] bg-white/25 backdrop-blur-md px-2.5 py-1.5 rounded-lg w-fit">Ethical Growth</div>
+              </div>
+
+              {/* Card 4 */}
+              <div 
+                className="ec-card-anim absolute left-[180px] top-[130px] w-[200px] h-[270px] rounded-[24px] shadow-[0_20px_40px_rgba(76,175,80,0.2)] transform -rotate-[2deg] z-[4] p-5 flex flex-col justify-end transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer overflow-hidden"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80') no-repeat center/cover" }}
+              >
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-50"></div>
+                <div className="text-white font-bold text-[10px] tracking-[3px] uppercase mb-2 bg-black/35 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 z-10 w-fit text-center mx-auto">Smarter Operations</div>
+              </div>
+
+              {/* Card 5 */}
+              <div 
+                className="ec-card-anim absolute left-[240px] top-[170px] w-[200px] h-[270px] rounded-[24px] shadow-[0_20px_40px_rgba(255,152,0,0.2)] transform rotate-[3deg] z-[5] p-5 flex flex-col justify-end transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80') no-repeat center/cover" }}
+              >
+                <div className="absolute top-[-50px] left-[-50px] w-[120px] h-[120px] bg-white/30 rounded-full blur-[25px]"></div>
+                <div className="text-center font-black uppercase text-white text-[24px] leading-[0.9] tracking-tighter mb-4 z-10">Shared<br />Purpose<br />Growth</div>
+
+                {/* Bubble pointing at this card */}
+                <div className="absolute -top-[45px] left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-[50px] text-[12px] font-bold text-white bg-[#111] shadow-[0_15px_30px_rgba(0,0,0,0.2)] whitespace-nowrap z-20">
+                  @eloma.care
+                  <div className="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-[#111]"></div>
+                </div>
+              </div>
+
+              {/* Card 6 */}
+              <div 
+                className="ec-card-anim absolute left-[300px] top-[210px] w-[200px] h-[270px] rounded-[24px] shadow-[0_20px_40px_rgba(255,87,34,0.2)] transform -rotate-[4deg] z-[6] p-5 flex flex-col justify-between border-[6px] border-[#111] transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=300&q=80') no-repeat center/cover" }}
+              >
+                <div className="text-white font-black text-[32px] uppercase tracking-tighter leading-none">Eco<br />Tech</div>
+                <div className="text-white font-bold tracking-widest text-[11px] bg-black/35 w-fit px-2.5 py-1 rounded-md">Value</div>
+              </div>
+
+              {/* Card 7 */}
+              <div 
+                className="ec-card-anim absolute left-[360px] top-[250px] w-[200px] h-[270px] rounded-[24px] shadow-[0_20px_40px_rgba(26,86,255,0.2)] transform rotate-[5deg] z-[7] p-5 flex flex-col items-center justify-center transition-transform duration-500 hover:scale-105 hover:-translate-y-4 hover:rotate-0 cursor-pointer border border-white/20"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=300&q=80') no-repeat center/cover" }}
+              >
+                <div className="w-[60px] h-[60px] border-[3px] border-white/30 rounded-full mb-4 flex items-center justify-center">
+                  <div className="w-[30px] h-[30px] bg-white rounded-full animate-pulse"></div>
+                </div>
+                <span className="text-white font-black text-[16px] tracking-widest uppercase block">Active</span>
+                <span className="text-white font-black text-[16px] tracking-widest uppercase block text-white/70">Action</span>
+              </div>
+
             </div>
-            <span className="text-white font-black text-[22px] tracking-widest uppercase block">Fluffy</span>
-            <span className="text-white font-black text-[22px] tracking-widest uppercase block text-white/70">Worm</span>
           </div>
 
         </div>

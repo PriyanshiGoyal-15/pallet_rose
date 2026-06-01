@@ -10,7 +10,7 @@ export const NewRevealSection: React.FC = () => {
   const cardsRef = useRef<HTMLDivElement>(null);
   const bubblesRef = useRef<HTMLDivElement>(null);
 
-  const textContent = "Whether you're an artist looking to sell your work / or buyer seeking unique pieces connects you to world of creativity & commerce.";
+  const textContent = "At Eloma Group, sustainability is not just a commitment; it is a core part of how we operate and grow / to minimize environmental impact & promote ethical practices across all our business verticals.";
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -81,8 +81,8 @@ export const NewRevealSection: React.FC = () => {
   };
 
   return (
-    <div className="mx-[14px] mb-[14px] bg-[#fafafa] rounded-[32px] overflow-hidden relative shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)]" ref={sectionRef}>
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-[40px] relative overflow-hidden">
+    <div id="sustainability" className="mx-[14px] mb-[14px] bg-[#fafafa] rounded-[26px] overflow-hidden relative shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)]" ref={sectionRef}>
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 py-[60px] md:py-[80px] relative overflow-hidden">
 
         {/* Abstract Background Glows */}
         <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#3dbf9e] opacity-10 rounded-full blur-[100px] mix-blend-multiply pointer-events-none"></div>
@@ -99,19 +99,19 @@ export const NewRevealSection: React.FC = () => {
 
           {/* Top Blue Card */}
           <div className="absolute inset-0 rounded-[20px] bg-[#1a56ff] shadow-[0_30px_60px_rgba(26,86,255,0.4)] transform rotate-[15deg] scale-90 z-10 flex flex-col items-center justify-center p-6 border-[4px] border-white/30 backdrop-blur-xl">
-            <span className="text-white font-black text-2xl tracking-widest uppercase opacity-90">Fluffy</span>
-            <span className="text-white font-black text-2xl tracking-widest uppercase opacity-90">Worm</span>
+            <span className="text-white font-black text-2xl tracking-widest uppercase opacity-90">Eco</span>
+            <span className="text-white font-black text-2xl tracking-widest uppercase opacity-90">Future</span>
           </div>
         </div>
 
         {/* Floating Bubbles */}
         <div ref={bubblesRef} className="absolute inset-0 pointer-events-none z-[10]">
           <div className="absolute px-5 py-3 rounded-[50px] text-[15px] font-bold text-white bg-[#111] shadow-[0_20px_40px_rgba(0,0,0,0.2)]" style={{ top: '30%', left: '15%' }}>
-            @alician
+            @ethical
             <div className="absolute -bottom-[8px] left-[20px] w-0 h-0 border-l-[8px] border-r-[8px] border-t-[10px] border-l-transparent border-r-transparent border-t-[#111]"></div>
           </div>
           <div className="absolute px-5 py-3 rounded-[50px] text-[15px] font-bold text-white bg-[#1a56ff] shadow-[0_20px_40px_rgba(26,86,255,0.3)]" style={{ top: '25%', right: '15%' }}>
-            @andrea
+            @sustainable
             <div className="absolute -bottom-[8px] left-[20px] w-0 h-0 border-l-[8px] border-r-[8px] border-t-[10px] border-l-transparent border-r-transparent border-t-[#1a56ff]"></div>
           </div>
         </div>
@@ -125,17 +125,15 @@ export const NewRevealSection: React.FC = () => {
           {renderWords()}
         </h2>
 
-        {/* Circular Icons Row */}
-        <div className="flex items-center gap-5 mt-[80px] relative z-[2]">
-          <div className="group w-[60px] h-[60px] rounded-full border-[1.5px] border-[#e0e0e0] flex items-center justify-center bg-white shadow-[0_10px_20px_rgba(0,0,0,0.03)] hover:border-[#111] hover:shadow-[0_15px_30px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-            <svg className="text-[#666] group-hover:text-[#111] transition-colors" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
-          </div>
-          <div className="group w-[60px] h-[60px] rounded-full border-[1.5px] border-[#e0e0e0] flex items-center justify-center bg-white shadow-[0_10px_20px_rgba(0,0,0,0.03)] hover:border-[#111] hover:shadow-[0_15px_30px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-            <svg className="text-[#666] group-hover:text-[#111] transition-colors" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-          </div>
-          <div className="group w-[60px] h-[60px] rounded-full border-[1.5px] border-[#e0e0e0] flex items-center justify-center bg-white shadow-[0_10px_20px_rgba(0,0,0,0.03)] hover:border-[#111] hover:shadow-[0_15px_30px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-            <svg className="text-[#666] group-hover:text-[#111] transition-colors" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline><polyline points="7.5 19.79 7.5 14.6 3 12"></polyline><polyline points="21 12 16.5 14.6 16.5 19.79"></polyline><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-          </div>
+        {/* Detailed Sustainability Content Card */}
+        <div className="mt-[50px] max-w-[800px] bg-white/70 backdrop-blur-md rounded-[24px] p-8 md:p-10 border border-black/5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative z-[2] text-center mx-[20px]">
+          <span className="text-[11px] font-black tracking-[3px] uppercase text-[#3dbf9e] block mb-3">Committed to Sustainable Growth and Responsible Business</span>
+          <p className="text-[14.5px] text-[#444] leading-[1.7] mb-4 font-semibold">
+            At Eloma Group, sustainability is not just a commitment; it is a core part of how we operate and grow. Across all our business verticals, we strive to minimize environmental impact, promote ethical practices, and build solutions that contribute to a more responsible and resilient future.
+          </p>
+          <p className="text-[13px] text-[#666] leading-[1.65] font-medium">
+            We integrate eco-conscious strategies within our transportation, digital, and operational processes, ensuring efficiency without compromising the environment. From reducing carbon footprints to adopting smarter technologies, our approach is focused on long-term value creation for businesses, communities, and the planet.
+          </p>
         </div>
 
       </section>

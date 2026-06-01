@@ -32,47 +32,7 @@ export const EcommerceSection: React.FC = () => {
     return startValue + (endValue - startValue) * progress;
   };
 
-  // 1. General progress for fanning out cards (from 0.15 to 0.75 scroll progress)
-  const fanProgress = Math.min(1, Math.max(0, (scrollProgress - 0.15) / 0.6));
 
-  // Cards container vertical descent offset (starts shifted up by -180px, sliding straight down from the top)
-  const containerTranslateYOffset = interpolate(-180, 0, Math.min(1, scrollProgress / 0.45));
-
-  // Individual card positions (stacked at left: 200px, top: 60px, rot: 0deg, width: 140px, height: 190px when stacked)
-  // Card 1: c4 (Red face) -> fanned: left: -60, top: 20, rot: -5, width: 220, height: 280
-  const card1Left = interpolate(300, -100, fanProgress);
-  const card1Top = interpolate(0, 0, fanProgress);
-  const card1Rot = interpolate(0, 0, fanProgress);
-  const card1Width = interpolate(140, 220, fanProgress);
-  const card1Height = interpolate(190, 280, fanProgress);
-
-  // Card 2: c2 (Colorful New) -> fanned: left: 90, top: 60, rot: -2, width: 240, height: 300
-  const card2Left = interpolate(340, 40, fanProgress);
-  const card2Top = interpolate(60, 100, fanProgress);
-  const card2Rot = interpolate(0, 0, fanProgress);
-  const card2Width = interpolate(140, 240, fanProgress);
-  const card2Height = interpolate(190, 300, fanProgress);
-
-  // Card 3: c1 (Tesla newspaper) -> fanned: left: 240, top: 100, rot: 1, width: 260, height: 310
-  const card3Left = interpolate(340, 240, fanProgress);
-  const card3Top = interpolate(60, 220, fanProgress);
-  const card3Rot = interpolate(0, 0, fanProgress);
-  const card3Width = interpolate(140, 260, fanProgress);
-  const card3Height = interpolate(190, 310, fanProgress);
-
-  // Card 4: c7 (Van Gogh) -> fanned: left: 390, top: 140, rot: 4, width: 200, height: 240
-  const card4Left = interpolate(340, 390, fanProgress);
-  const card4Top = interpolate(60, 380, fanProgress);
-  const card4Rot = interpolate(0, 0, fanProgress);
-  const card4Width = interpolate(140, 200, fanProgress);
-  const card4Height = interpolate(190, 240, fanProgress);
-
-  // Card 5: c10 (Yellow box) -> fanned: left: 540, top: 180, rot: 8, width: 190, height: 230
-  const card5Left = interpolate(340, 540, fanProgress);
-  const card5Top = interpolate(60, 480, fanProgress);
-  const card5Rot = interpolate(0, 0, fanProgress);
-  const card5Width = interpolate(140, 190, fanProgress);
-  const card5Height = interpolate(190, 230, fanProgress);
 
   // 2. Staggered text line animations
   // Line 1: always visible
@@ -86,35 +46,24 @@ export const EcommerceSection: React.FC = () => {
   // Paragraph & CTA reveal (from 0.6 to 0.85)
   const extraProgress = Math.min(1, Math.max(0, (scrollProgress - 0.6) / 0.25));
 
-  // Mention bubbles scale-up reveal (from 0.65 to 0.9)
-  const bubbleScale = Math.min(1, Math.max(0, (scrollProgress - 0.65) / 0.2));
+
 
   return (
     <div
       id="ecommerce-scroll-container"
+      className="ecommerce-scroll-container"
       ref={sectionRef}
-      style={{ height: '170vh', position: 'relative', background: 'transparent', padding: '35px' }}
     >
-      <div
-        className="ecommerce-sticky-wrapper"
-        style={{
-          position: 'sticky',
-          top: 0,
-          height: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          overflow: 'hidden',
-        }}
-      >
-        <section id="ecommerce" className="w-full min-h-auto px-[60px] py-[80px] relative flex flex-col justify-center">
+      <div className="ecommerce-sticky-wrapper">
+        <section id="ecommerce" className="w-full min-h-auto px-6 md:px-12 py-[60px] md:py-[80px] relative flex flex-col justify-center">
           {/* Left-aligned Scroll-Linked Copy */}
           <div className="max-w-[560px]">
             <div className="text-[11px] font-bold tracking-[3px] uppercase text-[#999] mb-[16px]" style={{ opacity: Math.max(0.3, scrollProgress * 1.5) }}>
-              E-COMMERCE
+              WHO WE ARE
             </div>
-            <h2 className="text-[clamp(36px,5vw,68px)] font-bold tracking-[-2px] leading-[1.05] max-w-[560px] mb-[28px]" style={{ margin: 0, lineHeight: 1.15 }}>
+            <h2 className="text-[clamp(36px,5vw,60px)] font-bold tracking-[-2px] leading-[1.05] max-w-[560px] mb-[28px]" style={{ margin: 0, lineHeight: 1.15 }}>
               <span style={{ display: 'block' }}>
-                Showcase,
+                A Diversified
               </span>
               <span
                 style={{
@@ -124,7 +73,7 @@ export const EcommerceSection: React.FC = () => {
                   transition: 'none',
                 }}
               >
-                Sell,
+                Business Group
               </span>
               <span
                 className="text-[#c0392b]"
@@ -135,7 +84,7 @@ export const EcommerceSection: React.FC = () => {
                   transition: 'none',
                 }}
               >
-                &amp; acquire arts to
+                Driving Innovation
               </span>
               <span
                 style={{
@@ -145,7 +94,7 @@ export const EcommerceSection: React.FC = () => {
                   transition: 'none',
                 }}
               >
-                our marketplace.
+                Across Industries
               </span>
             </h2>
 
@@ -156,14 +105,50 @@ export const EcommerceSection: React.FC = () => {
                 transition: 'none',
               }}
             >
-              <p className="text-[14px] text-[#999] max-w-[300px] leading-[1.7] mt-[24px] mb-[32px]">
-                Dynamic community where artists and buyers seamlessly merge. ArtFusion brings together creators and enthusiasts to share creativity.
+              <p className="text-[14.5px] text-[#555] max-w-[460px] leading-[1.7] mt-[24px] mb-[16px] font-medium">
+                Eloma Group is an entrepreneur-focused organization bringing together expertise in transportation, digital solutions, virtual security, travel and customer support services. We operate as a unified ecosystem of businesses, delivering integrated solutions that drive efficiency, growth, and long-term value.
               </p>
+              <p className="text-[13px] text-[#888] max-w-[460px] leading-[1.6] mb-[24px] font-normal">
+                With a strong focus on innovation, scalability, and sustainability, we empower businesses across sectors to adapt, evolve, and succeed in a rapidly changing world.
+              </p>
+
+              {/* Highlights Callout */}
+              <div className="mb-[28px] p-4 prounded-[16px] bg-white border border-black/[0.04] text-[13px] font-bold text-[#333] leading-relaxed max-w-[500px] shadow-[0_4px_16px_rgba(0,0,0,0.02)]">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 justify-center sm:justify-start">
+                  <span className="bg-[#1a56ff] text-white px-2 py-0.5 rounded-[6px] text-[11px] tracking-wide font-black">4+ VERTICALS</span>
+                  <span className="text-black/15">|</span>
+                  <span className="tracking-tight">Multiple Industries</span>
+                  <span className="text-black/15">|</span>
+                  <span className="text-[#3dbf9e] tracking-tight">One Vision for Sustainable Growth</span>
+                </div>
+              </div>
+
+              {/* Industries We Serve */}
+              <div className="mb-[32px]">
+                <h4 className="text-[11px] font-bold tracking-[2.5px] uppercase text-[#888] mb-[16px]">Industries We Serve</h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 list-none p-0 max-w-[500px]">
+                  {[
+                    "Transportation & Logistics",
+                    "Digital & Technology",
+                    "Security & Risk Management",
+                    "Customer Support & Call Center",
+                    "Travel and Tourism"
+                  ].map((industry, index) => (
+                    <li key={index} className="flex items-center gap-2.5 text-[13.5px] text-[#555] font-semibold hover:text-[#111] transition-colors duration-200">
+                      <span className="w-5 h-5 rounded-full bg-[#3dbf9e]/15 flex items-center justify-center text-[#3dbf9e] flex-shrink-0">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      {industry}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               <div className="flex gap-[14px]">
-                <button className="bg-[#111] text-[#fff] border-none px-[28px] py-[14px] rounded-[50px] text-[14px] font-medium cursor-pointer transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_8px_24px_rgba(0,0,0,0.2)]">Join for $9.99/m</button>
-                <button className="bg-transparent text-[#111] border-none text-[14px] font-medium cursor-pointer transition-opacity duration-200 hover:opacity-50 ml-[12px]">
-                  Read more →
-                </button>
+                <a href="#reveal-section" className="bg-[#111] text-[#fff] border-none px-[28px] py-[14px] rounded-[50px] text-[14px] font-medium cursor-pointer transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_8px_24px_rgba(0,0,0,0.2)] no-underline">Explore Verticals</a>
+                <a href="#vision-new" className="bg-transparent text-[#111] border-none text-[14px] font-medium cursor-pointer transition-opacity duration-200 hover:opacity-50 ml-[12px] no-underline flex items-center">
+                  Learn More →
+                </a>
               </div>
             </div>
           </div>

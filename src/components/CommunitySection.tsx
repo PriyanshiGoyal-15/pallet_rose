@@ -1,20 +1,20 @@
 import React from "react";
 
 const companies = [
-  "MERCURY",
-  "REMOTE",
-  "MIRO",
-  "DATABRICKS",
-  "LINEAR",
-  "CIRCUS",
-  "NOTION",
-  "STRIPE",
+  "AUSTRALIA",
+  "INDIA",
+  "UNITED STATES",
+  "CANADA",
+  "CHINA",
+  "UNITED KINGDOM",
+  "UAE",
+  "SINGAPORE",
 ];
 
-const title = "Trusted by the";
+const title = "Global Presence & ";
 
 const subtitle =
-  "Our growth hackers are experts in the identifying and capitalizing on the most";
+  "Operating across major global markets to deliver integrated, high-value business services, driving efficiency, cross-border progress, and scalable growth.";
 
 export const CommunitySection: React.FC = () => {
   return (
@@ -34,7 +34,7 @@ export const CommunitySection: React.FC = () => {
               </span>
             ))}
 
-            <span className="best">best.</span>
+            <span className="best">Hubs.</span>
           </h2>
 
           <p className="trusted-subtitle">
