@@ -96,7 +96,7 @@ export const NewVisionSection: React.FC = () => {
   };
 
   return (
-    <div className="mx-[14px] mb-[14px] bg-[#fafafa] rounded-[32px] overflow-hidden relative shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)]" ref={sectionRef}>
+    <div className="mx-[14px] mb-[14px] bg-[#fafafa] rounded-[26px] overflow-hidden relative shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)]" ref={sectionRef}>
 
       {/* Custom Cursor for Grid (Only visible when hovering grid items) */}
       <div
@@ -106,7 +106,7 @@ export const NewVisionSection: React.FC = () => {
         <span className="text-white text-xs font-bold tracking-widest">VIEW</span>
       </div>
 
-      <section id="vision-new" className="min-h-screen px-[40px] md:px-[80px] lg:px-[120px] py-[120px] flex flex-col lg:flex-row items-center justify-center gap-[40px] xl:gap-[100px] max-w-[1600px] mx-auto">
+      <section id="vision-new" className="min-h-screen px-6 md:px-12 py-[60px] md:py-[100px] flex flex-col lg:flex-row items-center justify-center gap-[40px] xl:gap-[100px] max-w-[1600px] mx-auto">
 
         {/* Left Side: Content */}
         <div ref={leftContentRef} className="flex-1 w-full max-w-[500px]">
@@ -115,17 +115,17 @@ export const NewVisionSection: React.FC = () => {
             <svg className="transform transition-transform duration-500 group-hover:scale-110" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
           </div>
 
-          <h2 className="text-[48px] lg:text-[64px] font-extrabold tracking-[-2.5px] leading-[1.05] text-[#111] mb-[24px]">
-            Our vision<br />for any art<br className="hidden lg:block" /> technology.
+          <h2 className="text-[44px] lg:text-[56px] font-extrabold tracking-[-2.5px] leading-[1.05] text-[#111] mb-[24px]">
+            Driven by<br />Visionary<br className="hidden lg:block" /> Leadership.
           </h2>
 
-          <p className="text-[17px] text-[#555] leading-[1.6] mb-[40px] max-w-[420px] font-medium">
-            Every piece of art tells a story. Echoes of Expression allows artists to showcase their personal journeys through their work.
+          <p className="text-[16px] text-[#555] leading-[1.65] mb-[40px] max-w-[420px] font-medium">
+            At Eloma Group, our growth is guided by strong leadership, clear vision, and a commitment to building businesses that create lasting impact. Our leaders bring together industry expertise, innovation, and a forward-thinking mindset to shape a multi-business ecosystem built for the future.
           </p>
 
-          <button className="bg-transparent border border-[#d0d0d0] text-[#111] px-[32px] py-[12px] rounded-[50px] text-[15px] font-semibold cursor-pointer hover:bg-[#111] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5">
-            Read more
-          </button>
+          <a href="#pricing" className="bg-transparent border border-[#d0d0d0] text-[#111] px-[32px] py-[12px] rounded-[50px] text-[15px] font-semibold cursor-pointer hover:bg-[#111] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 no-underline inline-block">
+            Our Motto
+          </a>
 
           {/* Floating Tool Icons Cluster (Matching Screenshot perfectly) */}
           <div ref={iconsRef} className="mt-[60px] relative w-[320px] h-[220px]">
@@ -178,84 +178,88 @@ export const NewVisionSection: React.FC = () => {
 
           {/* Header Row (Business & Create) */}
           <div className="flex justify-between items-center px-[32px] pt-[32px] pb-[16px] bg-white">
-            <h3 className="text-[24px] font-medium text-[#111] tracking-tight">Business</h3>
+            <h3 className="text-[20px] font-bold text-[#111] tracking-tight">Executive Leadership</h3>
             <button className="bg-[#f5f5f5] text-[#111] px-[16px] py-[8px] rounded-[50px] text-[13px] font-bold flex items-center gap-1.5 hover:bg-[#eaeaea] transition-colors shadow-sm">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              Create
+              Core Values
             </button>
           </div>
 
-          {/* Active Tab (Personal) with Folder Shape */}
+          {/* Active Tab (Founder's Vision) with Folder Shape */}
           <div className="relative w-full h-[60px]">
             {/* The SVG curve approach for the folder tab */}
             <div className="absolute top-0 left-0 w-full h-full bg-[#111] rounded-t-[20px] z-10" style={{ clipPath: 'polygon(0 0, 85% 0, 95% 100%, 0% 100%)' }}></div>
             <div className="relative z-20 flex items-center h-full px-[32px]">
-              <h3 className="text-[20px] font-medium text-white tracking-wide">Personal</h3>
+              <h3 className="text-[18px] font-semibold text-white tracking-wide">Founder's Vision</h3>
             </div>
             {/* Background block to connect grid and hide gaps */}
             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-[#fff] z-0"></div>
           </div>
 
-          {/* 3x2 Grid */}
           <div
             className="p-[20px] bg-white"
             onMouseEnter={handleMouseEnterGrid}
             onMouseLeave={handleMouseLeaveGrid}
           >
-            <div ref={gridRef} className="grid grid-cols-3 gap-[16px]" style={{ perspective: '1000px' }}>
+            <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px]" style={{ perspective: '1000px' }}>
 
-              {/* Top Row */}
-              {/* Item 1: Orange 3D Character */}
-              <div className="aspect-[4/5] rounded-[16px] bg-[#d32f2f] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#ff7043] to-[#d84315] opacity-90 transition-transform duration-500 group-hover:scale-105"></div>
+              {/* Founder Quote Card - Spanning 2 columns on larger viewports */}
+              <div className="col-span-1 sm:col-span-2 rounded-[16px] bg-[#111] text-white p-6 md:p-8 flex flex-col justify-between border border-neutral-800 shadow-[0_15px_30px_rgba(0,0,0,0.15)] transform transition-transform duration-500 hover:scale-[1.02]">
+                <div className="text-[15px] md:text-[16px] font-serif italic leading-relaxed text-neutral-200">
+                  "Eloma Group was built with a vision to go beyond a single business - to create an ecosystem where innovation, efficiency, and sustainability come together to drive real impact across industries."
+                </div>
+                <div className="mt-6 flex flex-col">
+                  <span className="text-[14px] font-bold tracking-widest text-[#3dbf9e]">R J</span>
+                  <span className="text-[10px] text-neutral-400 uppercase tracking-widest mt-0.5">Founder, Eloma Group</span>
+                </div>
+              </div>
+
+              {/* Value 1: Purpose-Driven */}
+              <div
+                className="aspect-[4/5] rounded-[16px] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80') no-repeat center/cover" }}
+              >
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 p-4 flex flex-col justify-between">
-                  <div className="text-right font-black uppercase text-xl opacity-20 tracking-tighter mix-blend-overlay">Staff</div>
-                  <div className="text-white font-bold uppercase tracking-[1px] text-[9px] bg-black/40 backdrop-blur-md px-2 py-1 rounded-full w-fit">No or Once More</div>
+                  <div className="text-right font-black uppercase text-xl opacity-40 tracking-tighter text-white">01</div>
+                  <div className="text-white font-bold uppercase tracking-[1px] text-[10px] bg-black/45 backdrop-blur-md px-2 py-1 rounded-full w-fit">Purpose</div>
                 </div>
               </div>
 
-              {/* Item 2: Person in Field */}
-              <div className="aspect-[4/5] rounded-[16px] bg-[#4caf50] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#66bb6a] to-[#2e7d32] transition-transform duration-500 group-hover:scale-105"></div>
-                <div className="absolute inset-0 p-4 flex items-center justify-center">
-                  <div className="text-white font-black text-[14px] tracking-[2px] uppercase text-center drop-shadow-md">A Knit By<br />Le Fleur*</div>
+              {/* Value 2: Performance */}
+              <div
+                className="aspect-[4/5] rounded-[16px] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80') no-repeat center/cover" }}
+              >
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 p-4 flex flex-col justify-between">
+                  <div className="text-right font-black uppercase text-xl opacity-40 tracking-tighter text-white">02</div>
+                  <div className="text-white font-bold uppercase tracking-[1px] text-[10px] bg-black/45 backdrop-blur-md px-2 py-1 rounded-full w-fit">Performance</div>
                 </div>
               </div>
 
-              {/* Item 3: The Green Knight */}
-              <div className="aspect-[4/5] rounded-[16px] bg-[#ffb300] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#ffca28] to-[#ff8f00] transition-transform duration-500 group-hover:scale-105"></div>
-                <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                  <div className="text-[#111] font-black text-[22px] uppercase tracking-tighter leading-none mb-1">The<br />Green<br />Knight</div>
+              {/* Value 3: Sustainability */}
+              <div
+                className="aspect-[4/5] rounded-[16px] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=400&q=80') no-repeat center/cover" }}
+              >
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 p-4 flex flex-col justify-between">
+                  <div className="text-right font-black uppercase text-xl opacity-40 tracking-tighter text-white">03</div>
+                  <div className="text-white font-bold uppercase tracking-[1px] text-[10px] bg-black/45 backdrop-blur-md px-2 py-1 rounded-full w-fit">Sustainable</div>
                 </div>
               </div>
 
-              {/* Bottom Row */}
-              {/* Item 4: ALL GOOD THINGS */}
-              <div className="aspect-[4/5] rounded-[16px] bg-[#ebebeb] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]">
-                <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"></div>
-                <div className="absolute inset-0 flex flex-col p-4">
-                  <div className="text-[20px] font-black uppercase text-black leading-none tracking-tighter z-10">All Good<br />Things</div>
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[80px] h-[80px] bg-[#c2185b] rounded-full mix-blend-multiply opacity-70 blur-[12px] group-hover:scale-110 transition-transform duration-500"></div>
-                  <div className="absolute bottom-4 left-4 text-[9px] font-bold text-black tracking-widest uppercase">To An...</div>
+              {/* Value 4: Scalability */}
+              <div
+                className="aspect-[4/5] rounded-[16px] relative overflow-hidden group cursor-pointer border border-[#f0f0f0]"
+                style={{ background: "linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80') no-repeat center/cover" }}
+              >
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 p-4 flex flex-col justify-between">
+                  <div className="text-right font-black uppercase text-xl opacity-40 tracking-tighter text-white">04</div>
+                  <div className="text-white font-bold uppercase tracking-[1px] text-[10px] bg-black/45 backdrop-blur-md px-2 py-1 rounded-full w-fit">Scalable</div>
                 </div>
-              </div>
-
-              {/* Item 5: Glimmer */}
-              <div className="aspect-[4/5] rounded-[16px] bg-[#ff5722] relative overflow-hidden group cursor-pointer border-[4px] border-[#111] flex flex-col justify-between p-3">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#ff7043] to-[#e64a19] transition-transform duration-500 group-hover:scale-105 z-0"></div>
-                <div className="text-[#111] font-black text-[28px] uppercase tracking-tighter leading-none mt-1 z-10">Glimmer</div>
-                <div className="text-white font-bold tracking-[1px] text-[10px] z-10">Mi. 10.4</div>
-              </div>
-
-              {/* Item 6: Fluffy Worm */}
-              <div className="aspect-[4/5] rounded-[16px] bg-[#1a56ff] relative overflow-hidden group cursor-pointer border border-[#f0f0f0] flex flex-col items-center justify-center p-3">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#1a56ff] to-[#42a5f5] transition-transform duration-500 group-hover:scale-105 z-0"></div>
-                <div className="relative z-10 w-[40px] h-[40px] border-[2px] border-white/40 rounded-full mb-3 flex items-center justify-center group-hover:border-white transition-colors duration-300">
-                  <div className="w-[16px] h-[16px] bg-white rounded-full"></div>
-                </div>
-                <span className="relative z-10 text-white font-black text-[14px] tracking-widest uppercase block leading-tight">Fluffy</span>
-                <span className="relative z-10 text-white font-black text-[14px] tracking-widest uppercase block leading-tight opacity-70">Worm</span>
               </div>
 
             </div>

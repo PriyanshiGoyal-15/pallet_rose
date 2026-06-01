@@ -5,22 +5,22 @@ export const Navbar: React.FC = () => {
     <nav>
       <a href="#" className="logo">
         <svg viewBox="0 0 30 30" fill="none">
-          <path d="M7 5L19 5L25 15L19 25L7 25L1 15Z" stroke="#4ecdc4" strokeWidth="2.2" fill="none" />
-          <path d="M11 10L19 15L11 20" stroke="#4ecdc4" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+          <path d="M7 5L19 5L25 15L19 25L7 25L1 15Z" stroke="#3dbf9e" strokeWidth="2.2" fill="none" />
+          <path d="M11 10L19 15L11 20" stroke="#1a56ff" strokeWidth="2.2" strokeLinecap="round" fill="none" />
         </svg>
-        Pallet Ross
+        Eloma Group
       </a>
       <ul className="nav-links">
-        <li><a href="#hero">Get Started</a></li>
+        <li><a href="#ecommerce">Who We Are</a></li>
         <li>
-          <a href="#vision" className="strategy-link">
-            <span className="strategy-dot"></span>Create strategy
+          <a href="#reveal-section" className="strategy-link">
+            <span className="strategy-dot"></span>Our Verticals
           </a>
         </li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#community">Contact</a></li>
-        <li><a href="#ecommerce">Solution</a></li>
-        <li><a href="#marketplace">E-Commerce</a></li>
+        <li><a href="#sustainability">Sustainability</a></li>
+        <li><a href="#life-at-eloma">Life at Eloma</a></li>
+        <li><a href="#pricing">Our Motto</a></li>
+        <li><a href="#community">Global Footprint</a></li>
       </ul>
       <div className="nav-actions">
         <button className="nav-icon-btn" aria-label="Profile">

@@ -27,7 +27,7 @@ export function GlobalArtDeck() {
         trigger: containerRef.current,
         start: "top top",
         endTrigger: "#ecommerce-scroll-container",
-        end: "top+=15% top",
+        end: "top+=13% top",
         pin: true,
         pinSpacing: false,
         invalidateOnRefresh: true,
@@ -81,8 +81,8 @@ export function GlobalArtDeck() {
   return (
     <div className="global-art-deck absolute top-[68%] left-[50%] w-0 h-0 z-[50] pointer-events-none" ref={containerRef}>
       {/* EXACT SCREENSHOT BUBBLES */}
-      <div className="mention-bubble-art absolute z-[60] bg-[#c0392b] text-white py-[6px] px-[12px] rounded-[24px] text-[13px] font-bold shadow-[0_4px_12px_rgba(0,0,0,0.15)]">@howard</div>
-      <div className="mention-bubble-art absolute z-[60] bg-[#111] text-white py-[6px] px-[12px] rounded-[24px] text-[13px] font-bold shadow-[0_4px_12px_rgba(0,0,0,0.15)]">@robin</div>
+      <div className="mention-bubble-art absolute z-[60] bg-[#c0392b] text-white py-[6px] px-[12px] rounded-[24px] text-[13px] font-bold shadow-[0_4px_12px_rgba(0,0,0,0.15)]">@efficiency</div>
+      <div className="mention-bubble-art absolute z-[60] bg-[#111] text-white py-[6px] px-[12px] rounded-[24px] text-[13px] font-bold shadow-[0_4px_12px_rgba(0,0,0,0.15)]">@growth</div>
 
       {cardClasses.map((c, index) => (
         <div key={index} className={`global-card absolute w-[220px] h-[280px] rounded-[16px] bg-cover bg-center shadow-[0_10px_40px_rgba(0,0,0,0.25)] origin-center border-[1px] border-[rgba(255,255,255,0.1)] ${c}`} />
